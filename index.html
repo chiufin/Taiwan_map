@@ -6,7 +6,8 @@
 <script src="https://www.amcharts.com/lib/4/core.js"></script>
 <script src="https://www.amcharts.com/lib/4/charts.js"></script>
 <script src="https://www.amcharts.com/lib/4/maps.js"></script>
-<script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
+<!-- <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-160/waSchools.js"></script> -->
+<script src="./chinaLow.js"></script>
 <style>
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -14,7 +15,7 @@ body {
 
 #chartdiv {
   width: 100%;
-  height: 400px;
+  height: 300px;
 }
 </style>
 </head>
@@ -29,7 +30,7 @@ body {
 var chart = am4core.create("chartdiv", am4maps.MapChart);
 
 // Set map definition
-chart.geodata = am4geodata_worldLow;
+chart.geodata = am4geodata_chinaLow;
 
 // Set projection
 chart.projection = new am4maps.projections.Miller();
@@ -42,15 +43,13 @@ polygonSeries.useGeodata = true;
 
 // Configure series
 var polygonTemplate = polygonSeries.mapPolygons.template;
-polygonTemplate.tooltipText = "{name}";
+polygonTemplate.tooltipText = "{NAME}";
 polygonTemplate.fill = am4core.color("#74B266");
 
 // Create hover state and set alternative fill color
 var hs = polygonTemplate.states.create("hover");
 hs.properties.fill = am4core.color("#367B25");
 
-// Remove Antarctica
-polygonSeries.include = ["PT", "ES", "FR", "DE", "BE", "NL", "IT", "AT", "GB", "IE", "CH", "LU"];
 </script>
 </body>
 </html>
